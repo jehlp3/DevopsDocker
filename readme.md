@@ -13,9 +13,9 @@ Este projeto é uma API desenvolvida com FastAPI para gerenciar alunos, cursos e
 1. **Faça o download do repositório:**
    [Clique aqui para realizar o download](https://github.com/guilhermeonrails/imersao-devops/archive/refs/heads/main.zip)
 
-2. **Crie um ambiente virtual:**
+2. **Crie um ambiente virtual:           ESSE** 
    ```sh
-   python3 -m venv ./venv
+   python -m venv ./venv 
    ```
 
 3. **Ative o ambiente virtual:**

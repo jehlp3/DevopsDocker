@@ -1,0 +1,35 @@
+# Versão do Docker Compose. A 3.8 é uma boa escolha moderna.
+# Não é mais obrigatória, comentada = version: '3.8'
+
+# Define os serviços (contêineres) que compõem a aplicação.
+services:
+  # Nome do serviço da sua aplicação.
+  app:
+    #  'build: .' #instrui o Docker Compose a construir a imagem usando o
+    # Dockerfile que está no mesmo diretório (o contexto de build é o diretório atual).
+    
+    build: .
+    container_name: my-fastapi-app # Nome do contêiner que será criado.
+    # Mapeia a porta 8000 da sua máquina (host) para a porta 8000 do contêiner,
+    # que é a porta que o uvicorn está usando, conforme definido no seu Dockerfile.
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual (onde está seu código-fonte) para o diretório /app
+    # dentro do contêiner. Isso é essencial para que a flag '--reload' do uvicorn
+    # funcione, pois as alterações no seu código serão refletidas instantaneamente.
+    volumes: #Interessante pois toda alteração no código será refletida no contêiner, vc não precisa rodar
+    #novamente a aplicação, é automático.
+      - .:/app
+
+ # environment: #SE tivesse...
+    # Define as variáveis de ambiente necessárias para a aplicação.
+    # Aqui você pode adicionar variáveis como DATABASE_URL, SECRET_KEY, etc.
+    # Exemplo:
+    # - DATABASE_URL=postgres://user:password@db:5432/mydatabase
+    # - SECRET_KEY=mysecretkey
+    # - DEBUG=True
+   # environment:
+     # - EXAMPLE_VAR=example_value
+
+    #networks:
+     # - networkName
